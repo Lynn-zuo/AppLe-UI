@@ -1,15 +1,12 @@
 <template>
-  <div>hi</div>
-  <Lynn></Lynn>
+  <div>导航栏 | <router-link to="/">Lynn</router-link> | <router-link to="/12">Lynn2</router-link></div>
+  <hr />
+  <router-view />
 </template>
 
 <script>
-import Lynn from './components/Lynn'
 
 export default {
   name: 'App',
-  components: {
-    Lynn
-  }
 }
 </script>
