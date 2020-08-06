@@ -2,7 +2,23 @@
   <div>
     <TopNav />
     <div class="content">
-      <aside>边栏</aside>
+      <aside v-if="asideVisible">
+        <h2>组件列表</h2>
+        <ol>
+          <li>
+            <router-link to="/doc/switch">Switch 组件</router-link>
+          </li>
+          <li>
+            <router-link to="/doc/button">Button 组件</router-link>
+          </li>
+          <li>
+            <router-link to="/doc/dialog">Dialog 组件</router-link>
+          </li>
+          <li>
+            <router-link to="/doc/tabs">Tabs 组件</router-link>
+          </li>
+        </ol>
+      </aside>
       <main>主内容</main>
     </div>
   </div>
@@ -11,15 +27,32 @@
 
 <script lang="ts">
 import TopNav from '../components/TopNav.vue'
+import {inject, Ref} from 'vue'
 export default {
-  components: {
-    TopNav
+  components: { TopNav },
+  setup() {
+    const asideVisible = inject<Ref<boolean>>('asideVisible'); // get
+    return {asideVisible}
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .content {
-  margin-top: 2rem;
+  aside {
+    background: lightblue;
+    width: 11rem;
+    padding: 1.5rem;
+    top: 0;
+    left: 0;
+    > h2 {
+      margin-bottom: 0.5rem;
+    }
+    > ol {
+      > li {
+        padding: 0.5rem 0;
+      }
+    }
+  }
 }
 </style>
