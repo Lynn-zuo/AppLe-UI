@@ -54,7 +54,6 @@ export default {
 .content {
   display: flex;
   aside {
-    background: lightblue;
     width: 11rem;
     padding: 1.5rem;
     > h2 {

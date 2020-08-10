@@ -3,7 +3,7 @@
     <TopNav />
     <div class="banner">
       <h1><a class="Doc-title" href="">AppLe-UI</a></h1>
-      <h3>一个优点可爱的简洁UI</h3>
+      <h3>一个有点可爱的简洁UI</h3>
       <p class="actions">
         <a href="https://github.com/Lynn-zuo" target="_blank">GitHub</a>
         <router-link to="/doc">开始</router-link>
@@ -24,7 +24,6 @@ export default {
 <style lang="scss" scoped>
 $h:1.6rem;
 .banner {
-  background: #CCFFFF;
   padding-top: 2rem;
   display:flex;
   flex-direction: column;

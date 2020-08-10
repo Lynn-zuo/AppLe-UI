@@ -1,8 +1,11 @@
 <template>
   <div>
     <div class="topnav">
-      <div class="logo">LOGO</div>
-      <input type="text" />
+      <div class="logo"><img src="../assets/logo.png" alt="LOGO"></div>
+      <div class="search">
+        <input type="text" />
+        <i class="iconfont icon-search"></i>
+      </div>
       <ul class="menu">
         <li><a href="/doc">文档</a></li>
         <li><a href="">组件</a></li>
@@ -33,21 +36,38 @@ export default {
   align-items: center;
   position:relative;
   z-index: 10;
-  background: rgb(204, 247, 230);
   > .logo{
     max-width: 6em;
     margin-left: 2rem;
     margin-right: auto;
+    > img {
+      max-width: 2.5em;
+      margin-left: 2.5rem;
+    }
   }
-  > input {
+  > .search {
     width: 13rem;
-    height:2rem;
-    border-radius: 2rem;
     margin-right: auto;
-    border: 1px solid #99CCCC;
-    &:focus{
-      // tip:后面解决获得焦点时缝隙背景色差异
-      border: #ffffff;
+    > input {
+      width: 13rem;
+      height:2.2rem;
+      border-radius: 2rem;
+      padding: 0.8rem;
+      margin-right: auto;
+      border: 1px solid #99CCCC;
+      outline: none; // 去掉选中时的外边框
+      &:focus{
+        border: 1px solid #0066FF;
+        &+ .iconfont{
+          // 父选择器+相邻元素选择
+          color: #0066FF;
+      }
+      }
+    }
+    > .iconfont {
+      position: relative;
+      margin-left: -1.8rem;
+      color: #a4a5a6;
     }
   }
   > .menu {
