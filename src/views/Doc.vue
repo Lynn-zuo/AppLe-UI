@@ -53,7 +53,9 @@ export default {
 }
 .content {
   display: flex;
+  background-color: aquamarine;
   aside {
+    background-color: cadetblue;
     width: 11rem;
     padding: 1.5rem;
     > h2 {

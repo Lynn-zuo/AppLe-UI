@@ -1,17 +1,15 @@
 <template>
-  <div>
-    <div class="topnav">
-      <div class="logo"><img src="../assets/logo.png" alt="LOGO"></div>
-      <div class="search">
-        <input type="text" />
-        <i class="iconfont icon-search"></i>
-      </div>
-      <ul class="menu">
-        <li><a href="/doc">文档</a></li>
-        <li><a href="">组件</a></li>
-      </ul>
-      <span class="toggleAside"><i @click="toggleAside" class="iconfont icon-toggle"></i></span>
+  <div class="topnav">
+    <div class="logo"><img src="../assets/logo.png" alt="LOGO"></div>
+    <div class="search">
+      <input type="text" />
+      <i class="iconfont icon-search"></i>
     </div>
+    <ul class="menu">
+      <li><router-link to="/doc">文档</router-link></li>
+      <li><router-link to="/">组件</router-link></li>
+    </ul>
+    <span class="toggleAside"><i @click="toggleAside" class="iconfont icon-toggle"></i></span>
   </div>
 </template>
 
@@ -30,6 +28,7 @@ export default {
 
 <style lang="scss" scoped>
 .topnav {
+  background: #DAE2F8;  /* fallback for old browsers */
   height:4.5rem;
   display: flex;
   justify-content: center;
@@ -93,7 +92,7 @@ export default {
     > .toggleAside  {display: inline-block;}
   }
   @media (max-width:300px) {
-    > input {display:none;}
+    > .search {display:none;}
     > .menu {display:none;}
     > .logo {margin-right:1.3rem;}
     > .toggleAside  {display: inline-block;}
