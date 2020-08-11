@@ -45,7 +45,7 @@ export default {
   flex-direction: column;
   height: 100vh;
   > .nav {
-    flex-shrink: 0;;
+    flex-shrink: 0;
   }
   > .content {
     flex-grow: 1;
@@ -53,9 +53,13 @@ export default {
 }
 .content {
   display: flex;
-  background-color: aquamarine;
+  background: #DAE2F8;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #DAE2F8, #D6A4A4);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #DAE2F8, #D6A4A4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   aside {
-    background-color: cadetblue;
+    background: #DAE2F8;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #DAE2F8, #D6A4A4);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #DAE2F8, #D6A4A4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     width: 11rem;
     padding: 1.5rem;
     > h2 {

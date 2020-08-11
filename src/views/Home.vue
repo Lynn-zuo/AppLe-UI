@@ -28,9 +28,9 @@ export default {
     TopNav
   },
   mounted() {
-    //绘制canvas图像
+    // 绘制canvas图像
 	  this.initCanvas();
-    const that = this
+    // 监听窗口缩放自适应
     window.onresize = () => {
       return (() => {
         this.initCanvas();
@@ -39,30 +39,32 @@ export default {
   },
   methods: {
     initCanvas(){
-      var canvas = document.getElementById("background") as HTMLCanvasElement;
+      var canvas = document.getElementById("background") as HTMLCanvasElement; // HTMLCanvasElement
       var ctx = canvas.getContext("2d");
-      var WIDTH, HEIGHT, initRoundPopulation = 70;
+      var WIDTH, HEIGHT, initRoundPopulation = 99;
       WIDTH = document.documentElement.clientWidth;
-      HEIGHT = document.documentElement.clientHeight;
+      HEIGHT = document.documentElement.clientHeight; // 高度改为getElementById('home-banner')，则鼠标移动事件失效,因为banner遮盖住了canvas
       canvas.width = WIDTH;
       canvas.height = HEIGHT;
-      //创建小球的构造函数
+
+      // 创建小球的构造函数
       function Ball() {
         this.x = randomNum(3, canvas.width - 3);
         this.y = randomNum(3, canvas.height - 3);
         this.r = randomNum(1, 3);
         this.color = randomColor();
-        this.speedX = randomNum(-3, 3) * 0.2;
-        this.speedY = randomNum(-3, 3) * 0.2;
+        this.speedX = randomNum(-3, 3) * 0.1;
+        this.speedY = randomNum(-3, 3) * 0.1;
       }
+      // 在构造函数的原型上添加方法函数
       Ball.prototype = {
         //绘制小球
         draw: function () {
           ctx.beginPath();
-          ctx.globalAlpha = 1;
-          ctx.fillStyle = this.color;
-          ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-          ctx.fill();
+          ctx.globalAlpha = 1; // 设置图形和图片透明度的属性
+          ctx.fillStyle = this.color; // 填充颜色
+          ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2); // 画圆弧方法
+          ctx.fill(); // 填充当前或已存在的路径
         },
         //小球移动
         move: function () {
@@ -85,7 +87,7 @@ export default {
         balls.push(ball);
       }
       main();
-
+      // 动画
       function main() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         // 鼠标移动绘制线
@@ -113,11 +115,11 @@ export default {
             if (i != j) {
               if (Math.sqrt(Math.pow((balls[i].x - balls[j].x), 2) + Math.pow((balls[i].y - balls[j].y), 2)) < 100) {
                 ctx.beginPath();
-                ctx.moveTo(balls[i].x, balls[i].y);
-                ctx.lineTo(balls[j].x, balls[j].y);
-                ctx.strokeStyle = "#D6A4A4";
-                ctx.globalAlpha = 0.2;
-                ctx.stroke();
+                ctx.moveTo(balls[i].x, balls[i].y); // 将一个新的子路径的起始点移动到(x，y)坐标
+                ctx.lineTo(balls[j].x, balls[j].y); // 使用直线连接子路径的终点到x，y坐标（并不会真正地绘制）
+                ctx.strokeStyle = "#DE6262"; // 描述画笔（绘制图形）颜色或者样式
+                ctx.globalAlpha = 0.1; // 透明度
+                ctx.stroke(); // 非零环绕规则，根据当前的画线样式，绘制当前或已经存在的路径
               }
             }
           }
@@ -130,19 +132,19 @@ export default {
             ctx.beginPath();
             ctx.moveTo(balls[i].x, balls[i].y);
             ctx.lineTo(mouseX, mouseY);
-            ctx.strokeStyle = "#D6A4A4";
-            ctx.globalAlpha = 0.8;
+            ctx.strokeStyle = "#DE6262";
+            ctx.globalAlpha = 0.6;
             ctx.stroke();
           }
         }
       }
-      //随机函数
+      // 随机函数
       function randomNum(m, n) {
         return Math.floor(Math.random() * (n - m + 1) + m);
       }
       // 修改小球颜色(可随机)
       function randomColor() {
-        return "rgb(47, 147, 247)";
+        return "rgb(47, 147, 247, 0.7)";
       }
     }
   }
@@ -166,7 +168,8 @@ $h:2.2rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 25rem;
+  margin-top: 3rem;
+  height: 18rem;
   > h1 {
     margin: 1rem 0;
     font-size: 5rem;
