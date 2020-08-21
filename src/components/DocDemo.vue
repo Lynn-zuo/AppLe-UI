@@ -1,12 +1,12 @@
 <template>
     <div>
-    Doc默认页面
+      快速上手
     </div>
     <div>
-    Doc默认页面
+      安装
     </div>
     <div>
-    Doc默认页面
+      使用
     </div>
 </template>
 

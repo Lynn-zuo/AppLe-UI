@@ -29,16 +29,16 @@ export default {
   },
   mounted() {
     // 绘制canvas图像
-	  this.initCanvas();
+	  this._initCanvas();
     // 监听窗口缩放自适应
     window.onresize = () => {
       return (() => {
-        this.initCanvas();
+        this._initCanvas();
       })()
     }
   },
   methods: {
-    initCanvas(){
+    _initCanvas(){
       var canvas = document.getElementById("background") as HTMLCanvasElement; // HTMLCanvasElement
       var ctx = canvas.getContext("2d");
       var WIDTH, HEIGHT, initRoundPopulation = 99;
@@ -159,8 +159,8 @@ $h:2.2rem;
   left: 0;
   z-index: -100;
   background: #DAE2F8;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to top, #FFFFFF, #DAE2F8);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to top, #FFFFFF, #DAE2F8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: -webkit-linear-gradient(to top, #D6A4A4, #DAE2F8);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #D6A4A4, #DAE2F8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 .banner {
   width: 100%;
