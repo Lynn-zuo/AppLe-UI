@@ -1,5 +1,5 @@
 <template>
-  <button @click="toggle" :class="{checked: value}"><span></span></button>
+  <button class="apple-switch" @click="toggle" :class="{'apple-checked': value}"><span></span></button>
 </template>
 
 <script lang="ts">
@@ -17,10 +17,10 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 $h:22px;
 $h1: $h - 4px;
-button{
+.apple-switch {
   width: 50px;
   height: $h;
   border: 1px solid rgb(133, 134, 139);
@@ -39,7 +39,7 @@ button{
     border-radius: $h1/2;
     transition: left 250ms;
   }
-  &.checked{
+  &.apple-checked {
     background-color:#3366FF;
     > span{
       left: calc(100% - #{$h1});
@@ -50,7 +50,7 @@ button{
       width: $h1 + 4px;
     }
   }
-  &.checked:active {
+  &.apple-checked:active {
     >span {
       width: $h1 + 4px;
       margin-left: -4px;
