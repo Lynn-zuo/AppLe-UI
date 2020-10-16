@@ -1,5 +1,9 @@
 <template>
   <div>
+    Switch示例
+  </div>
+  <h2>示例1</h2>
+  <div>
     <Switch v-model:value="bool" />
   </div>
 </template>

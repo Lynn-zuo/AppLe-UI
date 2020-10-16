@@ -2,7 +2,7 @@
   <div>
     Button示例
   </div>
-  <h1>示例1</h1>
+  <h2>示例1</h2>
   <div>
     <Button @click="onClick"
     >默认</Button>
@@ -13,7 +13,7 @@
     <Button theme="text"
     >文本</Button>
   </div>
-  <h1>示例2</h1>
+  <h2>示例2</h2>
   <div>
     <Button @click="onClick"
     >默认</Button>
@@ -38,7 +38,7 @@
     <Button theme="text" size="small"
     >小号</Button>
   </div>
-  <h1>示例3</h1>
+  <h2>示例3</h2>
   <div>
     <Button @click="onClick"
     >普通按钮</Button>
@@ -63,7 +63,7 @@
     <Button theme="text" level="danger"
     >危险文字按钮</Button>
   </div>
-  <h1>示例4</h1>
+  <h2>示例4</h2>
   <div>
     <Button disabled
     >禁用按钮</Button>
@@ -82,7 +82,7 @@
     <Button theme="text"  :disabled="true"
     >禁用按钮</Button>
   </div>
-  <h1>示例5</h1>
+  <h2>示例5</h2>
   <div>
     <Button loading
     >加载中</Button>

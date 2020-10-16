@@ -3,7 +3,7 @@
     <TopNav class="nav" />
     <div class="content">
       <aside v-if="asideVisible">
-        <h2>组件列表</h2>
+        <h2><router-link to="/doc">组件列表</router-link></h2>
         <ol>
           <li>
             <router-link to="/doc/switch">Switch 组件</router-link>
@@ -67,7 +67,13 @@ export default {
     }
     > ol {
       > li {
-        padding: 0.5rem 0;
+        padding: 0.6rem 0;
+        > a{
+          color:teal;
+          padding: 5px 5px;
+          border: 1px solid rgb(102, 99, 99);
+          border-radius: 15px;
+        }
       }
     }
     @media (max-width: 500px) {
