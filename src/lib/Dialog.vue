@@ -1,21 +1,23 @@
 <template>
 <template v-if="visible">
-  <div class="apple-dialog-overlay"></div>
+  <Teleport to="body">
+  <div class="apple-dialog-overlay" @click="onClickOverlay"></div>
   <div class="apple-dialog-wrapper">
     <div class="apple-dialog">
-      <header>标题
-        <span>x</span>
+      <header>
+        <slot name="title"></slot>
+        <span @click="close">x</span>
       </header>
       <main>
-        <p>提示1</p>
-        <p>提示2</p>
+        <slot name="content"></slot>
       </main>
       <footer>
-        <Button class="ok">OK</Button>
-        <Button class="cancel">Cancel</Button>
+        <Button @click="ok" class="ok">OK</Button>
+        <Button @click="cancel" class="cancel">Cancel</Button>
       </footer>
     </div>
   </div>
+  </Teleport>
 </template>
 </template>
 <script lang="ts">
@@ -25,7 +27,41 @@ export default {
     visible: {
       type: Boolean,
       default: false
+    },
+    closeOnClickOverlay: {
+      type: Boolean,
+      default: true
+    },
+    ok: {
+      type: Function
+    },
+    cancel: {
+      type: Function
+    },
+    title: {
+      type: String,
+      default: 'Alert'
     }
+  },
+  setup(props, context) {
+    const close = ()=>{
+      context.emit('update:visible', false)
+    }
+    const onClickOverlay = ()=>{
+      if(props.closeOnClickOverlay){
+        close()
+      }
+    }
+    const ok = ()=>{
+      if(props.ok && props.ok() !== false){
+        close()
+      }
+    }
+    const cancel = ()=>{
+      props.cancel?.()
+      close()
+    }
+    return {close, onClickOverlay, ok, cancel}
   },
   components:{
     Button
@@ -74,10 +110,19 @@ $border-color: #d9d9d9;
 .apple-dialog-wrapper {
   position: fixed;
   z-index: 9;
-  left: 40%;
-  top: 40%;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) tranlateY(-50%);
+  overflow: hidden;
 }
 .apple-dialog-overlay {
-  color: transparent;
+  width: 100%;
+  height: 100%;
+  background: gray;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 8;
+  opacity: 0.3;
 }
 </style>

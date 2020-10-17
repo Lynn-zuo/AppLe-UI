@@ -16,7 +16,7 @@
 <script lang="ts">
 import {ref} from 'vue'
 export default {
-  props:  {panes: Array},
+  props: {panes: Array},
   sestup(props) {
     const current = ref(props.panes[0].content)
     const setTab = (p) => {

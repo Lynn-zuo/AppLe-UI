@@ -34,7 +34,7 @@ export default {
   justify-content: center;
   align-items: center;
   position:relative;
-  z-index: 10;
+  z-index: 6;
   > .logo{
     max-width: 6em;
     margin-left: 2rem;
