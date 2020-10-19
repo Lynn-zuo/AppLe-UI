@@ -54,13 +54,13 @@ export default {
 .content {
   display: flex;
   background: #DAE2F8;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to bottom, #DAE2F8, #D6A4A4);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to bottom, #DAE2F8, #D6A4A4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: -webkit-linear-gradient(to bottom, #DAE2F8, #D6A4A4);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #DAE2F8, #D6A4A4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   aside {
     background: #DAE2F8;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to bottom, #DAE2F8, #D6A4A4);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to bottom, #DAE2F8, #D6A4A4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    width: 11rem;
+    width: 200px;
     padding: 1.5rem;
     > h2 {
       margin-bottom: 0.5rem;
@@ -81,6 +81,14 @@ export default {
       left: 0;
       position: fixed;
       padding-top: 6em;
+    }
+  }
+  main {
+    width: 100%;
+    padding-left:-200px;
+    padding-right: 20px;
+    @media (max-width: 500px) {
+      padding-left: 20px;
     }
   }
 }

@@ -11,6 +11,9 @@
     </div>
     <canvas id="background"></canvas>
   </div>
+  <footer class="foot">
+    页尾
+  </footer>
 </template>
 
 <script lang="ts">
@@ -42,8 +45,8 @@ export default {
       var canvas = document.getElementById("background") as HTMLCanvasElement; // HTMLCanvasElement
       var ctx = canvas.getContext("2d");
       var WIDTH, HEIGHT, initRoundPopulation = 99;
-      WIDTH = document.documentElement.clientWidth;
-      HEIGHT = document.documentElement.clientHeight; // 高度改为getElementById('home-banner')，则鼠标移动事件失效,因为banner遮盖住了canvas
+      WIDTH = document.documentElement.offsetWidth;
+      HEIGHT = document.documentElement.offsetHeight; // 高度改为getElementById('home-banner')，则鼠标移动事件失效,因为banner遮盖住了canvas
       canvas.width = WIDTH;
       canvas.height = HEIGHT;
 
@@ -201,6 +204,12 @@ $h:2.2rem;
   @media (max-width:300px) {
     > h1 {margin: 1rem 0; font-size: 2rem;}
   }
+}
+footer.foot{
+  margin-top: 5.8rem;
+  height:7.75rem;
+  background:dodgerblue;
+  opacity:0.5;
 }
 </style>
 
