@@ -1,19 +1,21 @@
 <template>
   <div class="apple-tabs">
-    <div class="apple-tabs-nav">
+    <div class="apple-tabs-nav" ref="container">
       <div class="apple-tabs-nav-item" :class="{selected: title==selected}"
-      v-for="(title, index) in titles" :key="index" @click="select(title)">
+      v-for="(title, index) in titles" @click="select(title)"
+      :ref="el => { if(title==selected) selectedItem = el }" :key="index">
       {{title}}</div>
+      <div class="apple-tabs-nav-indicator" ref="indicator"></div>
     </div>
     <div class="apple-tabs-content">
-      <component class="apple-tabs-content-item" :class="{selected:content.props.title===selected}" v-for="(content, index) in defaults" :is="content" :key="index"/>
+      <component :is="current" :key="current.props.title"/>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import Tab from './Tab.vue'
-import {computed} from 'vue'
+import {computed, ref, onMounted, watchEffect} from 'vue'
 export default {
   props:{
     selected: {
@@ -21,6 +23,23 @@ export default {
     }
   },
   setup(props, context) {
+    const selectedItem = ref<HTMLDivElement>(null)
+    const indicator = ref<HTMLDivElement>(null)
+    const container = ref<HTMLDivElement>(null)
+    const indicator_move = ()=>{
+      
+    }
+    // 下划线宽度改变及移动
+    onMounted(()=>{
+      watchEffect(()=>{
+        const {width} = selectedItem.value.getBoundingClientRect()
+        indicator.value.style.width = width + 'px'
+        const {left: left1} = container.value.getBoundingClientRect()
+        const {left: left2} = selectedItem.value.getBoundingClientRect()
+        const left = left2 - left1
+        indicator.value.style.left = left + 'px'
+      })
+    })
     const defaults = context.slots.default()
     defaults.forEach((tag)=>{
       if(tag.type !== Tab){
@@ -31,26 +50,36 @@ export default {
       return tag.props.title
     })
     const current = computed(()=>{
-      return defaults.filter((tag)=>{
-        return tag.props.title === props.selected
-      })[0]
+      // return defaults.filter(tag=>
+      //   tag.props.title == props.selected
+      // )[0]
+      return defaults.find(tag => tag.props.title == props.selected)
     })
     const select = (title: string) => {
       context.emit('update:selected', title)
     }
-    return {defaults, titles, current, select}
+    return {defaults, titles, current, select, selectedItem, indicator, container}
   }
 }
 </script>
 
 <style lang="scss">
 .apple-tabs {
-  .apple-tabs-nav {
+  &-nav {
     border-bottom: 1px solid #9d9d9d;
-    .apple-tabs-nav-item {
+    &-item {
       line-height: 28px;
       display: inline;
-      padding: 2px 20px 2px 5px;
+      padding: 2px 5px 2px 5px;
+      margin-right: 15px;
+    }
+    &-indicator {
+      position: relative;
+      height: 2px;
+      background-color:dodgerblue;
+      left: 0;
+      bottom: -1px;
+      transition: left 0.25s;
     }
     .selected {
       color:dodgerblue;
@@ -58,12 +87,6 @@ export default {
   }
   .apple-tabs-content {
     padding: 8px 0;
-    &-item {
-      display: none;
-      &.selected {
-        display:block;
-      }
-    }
   }
 }
 </style>
