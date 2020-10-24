@@ -11,42 +11,58 @@
     </div>
     <canvas id="background"></canvas>
   </div>
-  <footer class="foot">
-    页尾
-  </footer>
+  <div class="features">
+    <ul>
+      <li>
+        <svg class="icon">
+          <use xlink:href="#icon-vue"></use>
+        </svg>
+        <h3>基于 VUE 3</h3>
+        <p>使用了 VUE 3 Composition API</p>
+      </li>
+      <li>
+        <svg class="icon">
+          <use xlink:href="#icon-ts"></use>
+        </svg>
+        <h3>基于 TypeScript</h3>
+        <p>源代码采用TypeScript书写(非严格模式)</p>
+      </li>
+      <li>
+        <svg class="icon">
+          <use xlink:href="#icon-light"></use>
+        </svg>
+        <h3>代码简洁易读</h3>
+        <p>每个组件的源代码都十分简洁易读</p>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script lang="ts">
 import TopNav from '../components/TopNav.vue'
-import {Round_item} from '../utils/Round_item.js'
+import {onMounted} from 'vue'
 
-let canvas;
-let content;
 export default {
-  data () {
-    return {
-    }
-  },
   components: {
     TopNav
   },
-  mounted() {
-    // 绘制canvas图像
-	  this._initCanvas();
-    // 监听窗口缩放自适应
-    window.onresize = () => {
-      return (() => {
-        this._initCanvas();
-      })()
-    }
-  },
-  methods: {
-    _initCanvas(){
-      var canvas = document.getElementById("background") as HTMLCanvasElement; // HTMLCanvasElement
-      var ctx = canvas.getContext("2d");
-      var WIDTH, HEIGHT, initRoundPopulation = 99;
-      WIDTH = document.documentElement.offsetWidth;
-      HEIGHT = document.documentElement.offsetHeight; // 高度改为getElementById('home-banner')，则鼠标移动事件失效,因为banner遮盖住了canvas
+  setup() {
+    onMounted(()=>{
+      // 绘制canvas图像
+      _initCanvas();
+      // 监听窗口缩放自适应
+      window.onresize = () => {
+        return (() => {
+          _initCanvas();
+        })()
+      }
+    })
+    const _initCanvas = ()=>{
+      const canvas = document.getElementById("background") as HTMLCanvasElement; // HTMLCanvasElement
+      const ctx = canvas.getContext("2d");
+      const initRoundPopulation = 99;
+      const WIDTH = document.getElementById('home').offsetWidth;
+      const HEIGHT = document.getElementById('home').offsetHeight; // 高度改为getElementById('home-banner')，则鼠标移动事件失效,因为banner遮盖住了canvas
       canvas.width = WIDTH;
       canvas.height = HEIGHT;
 
@@ -105,7 +121,8 @@ export default {
       var mouseX;
       var mouseY;
       canvas.onmousemove = function (e) {
-        var ev = event || e;
+        console.log(e)
+        var ev = (event as any) || e;
         mouseX = ev.offsetX;
         mouseY = ev.offsetY;
       }
@@ -150,22 +167,29 @@ export default {
         return "rgb(47, 147, 247, 0.7)";
       }
     }
+    return {}
   }
 }
 </script>
 
 <style lang="scss" scoped>
-$h:2.2rem;
+$h:2.5rem;
+$blue:#DAE2F8;
+$pink:#D6A4A4;
+
 #background {
+  width:100%;
+  height:60%;
   position: absolute; // fixed相对于窗口定位
   top: 4.5rem;
   left: 0;
-  z-index: -100;
-  background: #DAE2F8;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to top, #D6A4A4, #DAE2F8);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to top, #D6A4A4, #DAE2F8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: $blue;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, $pink, $blue);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, $pink, $blue); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  clip-path: ellipse(80% 60% at 50% 30%)
 }
 .banner {
+  color: #3a5b7c;
   width: 100%;
   display:flex;
   flex-direction: column;
@@ -174,27 +198,34 @@ $h:2.2rem;
   margin-top: 3rem;
   height: 18rem;
   > h1 {
+    z-index:2;
     margin: 1rem 0;
     font-size: 5rem;
+    > a:hover {
+      text-decoration: none;
+    }
   }
   > .description {
+    z-index:2;
     font-size:1.2rem;
     margin-top:1rem;
   }
   > .actions {
+    z-index:2;
     padding:1rem 0;
     > a{
       font-size: 1.3rem;
       margin: 3rem 1rem;
-      background: #fff;
+      background: $blue;
       display: inline-block;
       height: $h;
       line-height: $h;
       border-radius: $h/2;
-      border: 1px solid #3366FF;
-      padding: 0 1rem;
+      border: 1px solid $blue;
+      padding: 1px 22px;
       &:hover {
-        color: #3366FF;
+        color: $pink;
+        text-decoration: none;
       }
     }
   }
@@ -205,11 +236,52 @@ $h:2.2rem;
     > h1 {margin: 1rem 0; font-size: 2rem;}
   }
 }
-footer.foot{
-  margin-top: 5.8rem;
-  height:7.75rem;
-  background:dodgerblue;
-  opacity:0.5;
+.features {
+  margin: 64px auto;
+  @media (min-width: 800px) {
+    width: 800px;
+    > ul {
+      > li {
+        width:50%;
+      }
+    }
+  }
+  @media (min-width: 1200px) {
+    width: 1200px;
+    > ul {
+      > li {
+        width:33.3333%;
+      }
+    }
+  }
+  > ul {
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 25px;
+    > li {
+      width: 380px;
+      margin: 16px 0;
+      display: grid;
+      justify-content: start;
+      align-content: space-between;
+      grid-template-areas: "icon title" "icon text";
+      grid-template-columns: 80px auto;
+      grid-template-rows: 1fr auto;
+      > .icon {
+        grid-area: icon;
+        width: 64px;
+        height: 64px;
+      }
+      > h3 {
+        grid-area: title;
+        font-size: 28px;
+      }
+      p {
+        grid-area: text;
+      }
+    }
+  }
 }
 </style>
 

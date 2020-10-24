@@ -26,9 +26,6 @@ export default {
     const selectedItem = ref<HTMLDivElement>(null)
     const indicator = ref<HTMLDivElement>(null)
     const container = ref<HTMLDivElement>(null)
-    const indicator_move = ()=>{
-      
-    }
     // 下划线宽度改变及移动
     onMounted(()=>{
       watchEffect(()=>{

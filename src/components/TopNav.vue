@@ -1,13 +1,16 @@
 <template>
   <div class="topnav">
-    <div class="logo"><img src="../assets/logo.png" alt="LOGO"></div>
+    <router-link to="/" class="logo">
+      <svg class="icon">
+        <use xlink:href="#icon-apple-book"></use>
+      </svg>
+    </router-link>
     <div class="search">
       <input type="text" />
       <i class="iconfont icon-search"></i>
     </div>
     <ul class="menu">
       <li><router-link to="/doc">文档</router-link></li>
-      <li><router-link to="/">组件</router-link></li>
     </ul>
     <span class="toggleAside"><i @click="toggleAside" class="iconfont icon-toggle"></i></span>
   </div>
@@ -27,28 +30,31 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$pink: #D6A4A4;
 .topnav {
+  color: #3a5b7c;
   background: #DAE2F8;  /* fallback for old browsers */
   height:4.5rem;
   display: flex;
   justify-content: center;
+  text-align:center;
   align-items: center;
   position:relative;
   z-index: 6;
   > .logo{
     max-width: 6em;
-    margin-left: 2rem;
     margin-right: auto;
-    > img {
-      max-width: 2.5em;
-      margin-left: 2.5rem;
+    > .icon {
+      width: 46px;
+      height: 46px;
+      margin-left: 30px;
     }
   }
   > .search {
     width: 13rem;
     margin-right: auto;
     > input {
-      width: 13rem;
+      width: 12rem;
       height:2.2rem;
       border-radius: 2rem;
       padding: 0.8rem;
@@ -66,7 +72,7 @@ export default {
     > .iconfont {
       position: relative;
       margin-left: -1.8rem;
-      color: #a4a5a6;
+      color: #a2a8af;
     }
   }
   > .menu {
@@ -74,9 +80,11 @@ export default {
     white-space: nowrap;
     flex-wrap: nowrap;
     > li {
-      margin-right:2rem;
+      margin-right:2.2rem;
+      font-size:1.2rem;
+      color: #EC6F66;
       a:hover{
-        color: #3366FF;
+        color: $pink;
       }
     }
   }
@@ -84,17 +92,21 @@ export default {
     position: absolute;
     left: 1rem;
     display: none;
+    color: fadeout(blue, 0.5)
   }
   @media (max-width:500px) {
-    > input {margin-right:1rem;}
+    > .search {
+      > input {margin-right:1rem; width: 9rem;}
+      > .iconfont {margin-left: -2.5rem;}
+    }
     > .menu {display:none;}
-    > .logo {margin-right:1.3rem;}
+    > .logo {margin-right: 1.2rem;margin-left: 2.5rem;}
     > .toggleAside  {display: inline-block;}
   }
-  @media (max-width:300px) {
+  @media (max-width:330px) {
     > .search {display:none;}
     > .menu {display:none;}
-    > .logo {margin-right:1.3rem;}
+    > .logo {margin-right: 3rem;}
     > .toggleAside  {display: inline-block;}
   }
 }
