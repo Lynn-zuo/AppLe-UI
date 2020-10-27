@@ -12,7 +12,11 @@
     <ul class="menu">
       <li><router-link to="/doc">文档</router-link></li>
     </ul>
-    <span class="toggleAside"><i @click="toggleAside" class="iconfont icon-toggle"></i></span>
+    <span class="toggleAside" @click="toggleAside" >
+      <svg class="icon">
+        <use xlink:href="#icon-toggle"></use>
+      </svg>
+    </span>
   </div>
 </template>
 

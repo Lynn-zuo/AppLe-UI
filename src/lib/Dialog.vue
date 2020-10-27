@@ -6,7 +6,11 @@
     <div class="apple-dialog">
       <header>
         <slot name="title"></slot>
-        <span @click="close">x</span>
+        <span @click="close">
+          <svg class="icon">
+            <use xlink:href="#icon-close"></use>
+          </svg>
+        </span>
       </header>
       <main>
         <slot name="content"></slot>
@@ -96,6 +100,7 @@ $border-color: #d9d9d9;
   }
   footer {
     text-align: center;
+    padding-bottom: 5px;
     Button {
       width: 58px;
       height: 25px;
@@ -112,7 +117,7 @@ $border-color: #d9d9d9;
   z-index: 9;
   left: 50%;
   top: 50%;
-  transform: translateX(-50%) tranlateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
   overflow: hidden;
 }
 .apple-dialog-overlay {
