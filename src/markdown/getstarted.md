@@ -5,7 +5,12 @@
 然后在你的代码中先写入下面的代码
 
 ```
-import {Button, Tabs, Switch, Dialog} from "Apple-UI"
+import {
+  Button,
+  Tabs,
+  Switch,
+  Dialog
+} from "Apple-UI"
 ```
 
 就可以使用我提供的组件了
@@ -21,9 +26,16 @@ import {Button, Tabs, Switch, Dialog} from "Apple-UI"
   </div>
 </template>
 <script>
-  import {Button, Tabs, Switch, Dialog} from "Apple-UI"
+  import {
+    Button,
+    Tabs,
+    Switch,
+    Dialog
+  } from "Apple-UI"
   export default {
     component: {Button}
   }
 </script>
 ```
+
+下一节：[Button组件](#/doc/button)

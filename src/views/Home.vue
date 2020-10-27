@@ -6,7 +6,7 @@
       <p class="description">一个有点可爱的简洁UI</p>
       <p class="actions">
         <a href="https://github.com/Lynn-zuo" target="_blank">GitHub</a>
-        <router-link to="/doc">开始</router-link>
+        <router-link to="/doc/get-start">开始</router-link>
       </p>
     </div>
     <canvas id="background"></canvas>
@@ -178,8 +178,6 @@ $blue:#DAE2F8;
 $pink:#D6A4A4;
 
 #background {
-  width:100%;
-  height:60%;
   position: absolute; // fixed相对于窗口定位
   top: 4.5rem;
   left: 0;
@@ -237,7 +235,7 @@ $pink:#D6A4A4;
   }
 }
 .features {
-  margin: 64px auto;
+  margin: 78px auto;
   @media (min-width: 800px) {
     width: 800px;
     > ul {
