@@ -19,7 +19,7 @@ export const router = createRouter({
     {path: '/', component: Home},
     {path: '/doc', component: Doc, children:[
       {path: '', redirect: '/doc/intro'},
-      {path: 'intro', component: h(Markdown, {path:`../markdown/intro.md`})}, // intro.vue冗余可删，缺点是异步加载慢
+      {path: 'intro', component: Intro}, // h(Markdown, {path:`../markdown/intro.md`}) intro.vue冗余可删，缺点是异步加载慢
       {path: 'install', component: Install},
       {path: 'get-start', component: GetStarted},
       {path: 'switch', component: SwitchDemo},
