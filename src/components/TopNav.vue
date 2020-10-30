@@ -7,7 +7,9 @@
     </router-link>
     <div class="search">
       <input type="text" />
-      <i class="iconfont icon-search"></i>
+      <svg class="icon iconfont">
+        <use xlink:href="#icon-search"></use>
+      </svg>
     </div>
     <ul class="menu">
       <li><router-link to="/doc">文档</router-link></li>
@@ -73,7 +75,7 @@ $pink: #D6A4A4;
       }
       }
     }
-    > .iconfont {
+    > svg.iconfont {
       position: relative;
       margin-left: -1.8rem;
       color: #a2a8af;
@@ -101,7 +103,7 @@ $pink: #D6A4A4;
   @media (max-width:500px) {
     > .search {
       > input {margin-right:1rem; width: 9rem;}
-      > .iconfont {margin-left: -2.5rem;}
+      > svg.iconfont {margin-left: -2.5rem;}
     }
     > .menu {display:none;}
     > .logo {margin-right: 1.2rem;margin-left: 2.5rem;}
