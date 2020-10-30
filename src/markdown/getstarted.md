@@ -9,8 +9,9 @@ import {
   Button,
   Tabs,
   Switch,
-  Dialog
-} from "Apple-UI"
+  Dialog,
+  openDialog
+} from "apple-ui"
 ```
 
 就可以使用我提供的组件了
@@ -30,8 +31,9 @@ import {
     Button,
     Tabs,
     Switch,
-    Dialog
-  } from "Apple-UI"
+    Dialog,
+    openDialog
+  } from "apple-ui"
   export default {
     component: {Button}
   }

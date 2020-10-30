@@ -3,13 +3,13 @@
 打开终端运行下列命令：
 
 ```
-npm install AppLe-UI
+npm install apple-ui
 ```
 
 或
 
 ```
-yarn add AppLe-UI
+yarn add apple-ui
 ```
 
 下一节：[开始使用](#/doc/get-start)
